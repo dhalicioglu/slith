@@ -58,10 +58,13 @@ public class GameManager {
 	
 	// what happens when the ball touches the stick
 	public void collideWithStick(){
+		float angleTuner = 1;
+		angleTuner = (-1 * (this.getBall().getCenterX() - this.getStick().getCoordinateCenter()) / (this.getStick().getLength()/2));
+		
 		if(this.getBall().getAngle() >= 180 && this.getBall().getAngle() <= 270){
-			this.getBall().setAngle((float) (0.5 * (180 - (this.getBall().getAngle() - 180))));
+			this.getBall().setAngle((float) (180 - (this.getBall().getAngle() - 180)) + angleTuner * (this.getBall().getAngle() - 180));
 		}else if(this.getBall().getAngle() > 270 && this.getBall().getAngle() <= 360){
-			this.getBall().setAngle(360 - this.getBall().getAngle());
+			this.getBall().setAngle((360 - this.getBall().getAngle()) + angleTuner * (360 - this.getBall().getAngle()));
 		}
 	}
 	

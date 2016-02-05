@@ -14,7 +14,7 @@ public class Ball {
 		this.setRadius(15);
 		this.setCenterX(400);
 		this.setCenterY(10);
-		this.setVelocity(2);
+		this.setVelocity(4);
 		this.setAngle(270);
 	}
 
