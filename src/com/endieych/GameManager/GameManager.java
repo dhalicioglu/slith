@@ -2,10 +2,12 @@ package com.endieych.GameManager;
 
 import com.endieych.gameUnits.Ball;
 import com.endieych.gameUnits.Stick;
+import com.endieych.timeMeasurement.TimeMeasure;
 
 public class GameManager {
 	private Stick stick;
 	private Ball ball;
+	private boolean isGameStarted = false;
 	
 	// constructor
 	public GameManager(){
@@ -31,13 +33,21 @@ public class GameManager {
 	}
 	
 	// moves the ball according to its speed and angle
-	public void moveBall(float screenWidth){
+	public void moveBall(float screenWidth, TimeMeasure timer){
 		double angleRadian = Math.toRadians(this.ball.getAngle());
 		
 		if(this.isIntersect(this.stick, this.ball)){
-			this.collideWithStick();
-			this.getBall().setCenterX(this.getBall().getCenterX() + (float) (Math.cos(angleRadian) * this.getBall().getVelocity()));
-			this.getBall().setCenterY(this.getBall().getCenterY() + (float) (Math.sin(angleRadian) * this.getBall().getVelocity() * -1));
+			if(!isGameStarted){
+				timer.startTimer();
+				this.collideWithStick();
+				this.getBall().setCenterX(this.getBall().getCenterX() + (float) (Math.cos(angleRadian) * this.getBall().getVelocity()));
+				this.getBall().setCenterY(this.getBall().getCenterY() + (float) (Math.sin(angleRadian) * this.getBall().getVelocity() * -1));
+				this.setGameStarted(true);
+			}else{
+				this.collideWithStick();
+				this.getBall().setCenterX(this.getBall().getCenterX() + (float) (Math.cos(angleRadian) * this.getBall().getVelocity()));
+				this.getBall().setCenterY(this.getBall().getCenterY() + (float) (Math.sin(angleRadian) * this.getBall().getVelocity() * -1));
+			}
 		}else if(this.getBall().getCenterX() <= this.getBall().getRadius()){
 			this.collideWithLeftBorder();
 			this.getBall().setCenterX(this.getBall().getCenterX() + (float) (Math.cos(angleRadian) * this.getBall().getVelocity()));
@@ -53,6 +63,10 @@ public class GameManager {
 		}else{
 			this.getBall().setCenterX(this.getBall().getCenterX() + (float) (Math.cos(angleRadian) * this.getBall().getVelocity()));
 			this.getBall().setCenterY(this.getBall().getCenterY() + (float) (Math.sin(angleRadian) * this.getBall().getVelocity() * -1));
+		}
+		
+		if(this.getBall().getCenterY() - (this.getBall().getRadius() * 2) > this.getStick().getCoordinateY()){
+			timer.endTimer();
 		}
 	}
 	
@@ -105,12 +119,18 @@ public class GameManager {
 	public Ball getBall() {
 		return ball;
 	}
-		
+	public boolean isGameStarted() {
+		return isGameStarted;
+	}
+	
 	// setters for private attributes
 	public void setStick(Stick stick) {
 		this.stick = stick;
 	}
 	public void setBall(Ball ball) {
 		this.ball = ball;
+	}
+	public void setGameStarted(boolean isGameStarted) {
+		this.isGameStarted = isGameStarted;
 	}
 }

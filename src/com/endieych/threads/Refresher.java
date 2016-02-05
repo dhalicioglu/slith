@@ -12,10 +12,16 @@ public class Refresher implements Runnable{
 	@Override
 	public void run() {
 		
-		// this part refreshes the game screen
-		this.gameActivity.getGameScreen().getGameManager().moveBall(gameActivity.getGameScreen().getWidth());
-		this.gameActivity.getGameScreen().invalidate();
-		this.gameActivity.getHandler().postDelayed(this, 10);
+		double currentTime = System.currentTimeMillis();
+		double duration = (currentTime - this.gameActivity.getTimer().getStartTime()) / 1000;
+		
+		if(this.gameActivity.getTimer().getEndTime() == 0){
+			// this part refreshes the game screen
+			this.gameActivity.getGameScreen().getGameManager().moveBall(this.gameActivity.getGameScreen().getWidth(), this.gameActivity.getTimer());
+			this.gameActivity.getTimerScreen().setText(String.valueOf(duration));
+			this.gameActivity.getGameScreen().invalidate();
+			this.gameActivity.getHandler().postDelayed(this, 10);
+		}
 		
 	}
 	

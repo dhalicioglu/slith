@@ -7,6 +7,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -43,6 +44,12 @@ public class GameScreen extends View{
 	protected void onDraw(Canvas canvas) {
 		super.onDraw(canvas);
 		
+		
+		// draw borders
+		paint.setColor(Color.BLACK);
+		paint.setStrokeWidth(1.5f);
+		paint.setStyle(Paint.Style.STROKE);
+		canvas.drawRect(0, 0, canvas.getWidth(), canvas.getHeight(), paint);
 		// arrange the size of the stick and ball
 		this.setImageStick(Bitmap.createScaledBitmap(this.getImageStick(), (int) (gameManager.getStick().getCoordinateFront() - gameManager.getStick().getCoordinateEnd()), canvas.getHeight()/30, true));
 		this.setImageBall(Bitmap.createScaledBitmap(this.getImageBall(), (int) gameManager.getBall().getRadius()*2, (int) (gameManager.getBall().getRadius()*2), true));

@@ -1,18 +1,22 @@
 package com.endieych.slith;
 
 import com.endieych.threads.Refresher;
-
+import com.endieych.timeMeasurement.TimeMeasure;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 public class GameActivity extends ActionBarActivity {
 	
 	private GameScreen gameScreen;
 	private Refresher refresher;
 	private Handler handler;
+	private TimeMeasure timer;
+	
+	private TextView timerScreen;
 	
 	
 	// android stuff, on create eg.
@@ -25,6 +29,10 @@ public class GameActivity extends ActionBarActivity {
 		setGameScreen((GameScreen) findViewById(R.id.gameScreen));
 		this.setHandler(new Handler());
 		this.setRefresher(new Refresher(this));
+		
+		setTimerScreen((TextView)findViewById(R.id.Timer));
+		
+		timer = new TimeMeasure();
 		
 		this.getHandler().post(this.refresher);
 		this.refresher.run();
@@ -59,6 +67,12 @@ public class GameActivity extends ActionBarActivity {
 	public Handler getHandler() {
 		return handler;
 	}
+	public TimeMeasure getTimer() {
+		return timer;
+	}
+	public TextView getTimerScreen() {
+		return timerScreen;
+	}
 	
 	// setters for private attributes
 	public void setGameScreen(GameScreen gameScreen) {
@@ -69,6 +83,12 @@ public class GameActivity extends ActionBarActivity {
 	}
 	public void setHandler(Handler handler) {
 		this.handler = handler;
+	}
+	public void setTimer(TimeMeasure timer) {
+		this.timer = timer;
+	}	
+	public void setTimerScreen(TextView textView) {
+		this.timerScreen = textView;
 	}
 
 
