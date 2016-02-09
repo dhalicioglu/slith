@@ -1643,7 +1643,7 @@ containing a value of this type.
         public static final int stick=0x7f020036;
     }
     public static final class id {
-        public static final int Info=0x7f090043;
+        public static final int BestScore=0x7f090043;
         public static final int Status=0x7f090041;
         public static final int Timer=0x7f090042;
         public static final int action_bar=0x7f090031;

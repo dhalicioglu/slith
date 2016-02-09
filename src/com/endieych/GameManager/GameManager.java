@@ -61,6 +61,7 @@ public class GameManager {
 		if(this.isIntersect(this.stick, this.ball)){
 			if(!isGameStarted){
 				timer.startTimer();
+				this.getBall().setVelocity(5);
 				this.collideWithStick();
 				this.getBall().setCenterX(this.getBall().getCenterX() + (float) (Math.cos(angleRadian) * this.getBall().getVelocity()));
 				this.getBall().setCenterY(this.getBall().getCenterY() + (float) (Math.sin(angleRadian) * this.getBall().getVelocity() * -1));

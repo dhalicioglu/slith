@@ -342,7 +342,7 @@ int drawable ball 0x7f020033
 int drawable ic_launcher 0x7f020034
 int drawable play 0x7f020035
 int drawable stick 0x7f020036
-int id Info 0x7f090043
+int id BestScore 0x7f090043
 int id Status 0x7f090041
 int id Timer 0x7f090042
 int id action_bar 0x7f090031

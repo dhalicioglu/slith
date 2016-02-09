@@ -12,8 +12,9 @@ public class Refresher implements Runnable{
 	@Override
 	public void run() {
 		
-		double currentTime = System.currentTimeMillis();
+		double currentTime = this.gameActivity.getTimer().getCurrentTime();
 		double duration = (currentTime - this.gameActivity.getTimer().getStartTime()) / 1000;
+		
 		
 		// this part refreshes the game screen
 		if(this.gameActivity.getTimer().getEndTime() == 0){
@@ -24,7 +25,9 @@ public class Refresher implements Runnable{
 			this.gameActivity.getGameScreen().getGameManager().moveObstacle(this.gameActivity.getGameScreen().getWidth(), this.gameActivity.getGameScreen().getHeight());
 			
 			// refresh timer on the screen
-			this.gameActivity.getTimerScreen().setText(String.valueOf(duration));
+			if(this.gameActivity.getGameScreen().getGameManager().isGameStarted()){
+				this.gameActivity.getTimerScreen().setText(String.valueOf(duration));
+			}
 			
 			// refresh status on the screen
 			if(this.gameActivity.getGameScreen().getGameManager().getBall().getVelocity() <= 6){
@@ -51,10 +54,10 @@ public class Refresher implements Runnable{
 				this.gameActivity.getStatusScreen().setText("GOD");
 			}
 			
-			
+				
 			// refresh screen
 			this.gameActivity.getGameScreen().invalidate();
-			
+				
 			// delay the refresh time
 			this.gameActivity.getHandler().postDelayed(this, 10);
 		}

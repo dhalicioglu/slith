@@ -19,6 +19,10 @@ public class TimeMeasure {
 	public void endTimer(){
 		this.setEndTime(System.currentTimeMillis());
 	}
+	// get current time
+	public double getCurrentTime(){
+		return System.currentTimeMillis();
+	}
 	
 	
 	

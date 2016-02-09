@@ -10,7 +10,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 public class GameActivity extends ActionBarActivity {
-	
+    
 	private GameScreen gameScreen;
 	private Refresher refresher;
 	private Handler handler;
