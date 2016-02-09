@@ -342,7 +342,9 @@ int drawable ball 0x7f020033
 int drawable ic_launcher 0x7f020034
 int drawable play 0x7f020035
 int drawable stick 0x7f020036
-int id Timer 0x7f090041
+int id Info 0x7f090043
+int id Status 0x7f090041
+int id Timer 0x7f090042
 int id action_bar 0x7f090031
 int id action_bar_activity_content 0x7f090003
 int id action_bar_container 0x7f090030
@@ -356,7 +358,7 @@ int id action_menu_presenter 0x7f090006
 int id action_mode_bar 0x7f09002e
 int id action_mode_bar_stub 0x7f09002d
 int id action_mode_close_button 0x7f090020
-int id action_settings 0x7f090044
+int id action_settings 0x7f090046
 int id activity_chooser_view_content 0x7f090021
 int id advertScreen 0x7f09003f
 int id always 0x7f090014
@@ -372,13 +374,13 @@ int id edit_query 0x7f090033
 int id end 0x7f09001c
 int id expand_activities_button 0x7f090022
 int id expanded_menu 0x7f090028
-int id gameScreen 0x7f090042
+int id gameScreen 0x7f090044
 int id home 0x7f090000
 int id homeAsUp 0x7f09000e
 int id icon 0x7f090026
 int id ifRoom 0x7f090016
 int id image 0x7f090023
-int id imagePlay 0x7f090043
+int id imagePlay 0x7f090045
 int id infoScreen 0x7f090040
 int id listMode 0x7f09000a
 int id list_item 0x7f090025

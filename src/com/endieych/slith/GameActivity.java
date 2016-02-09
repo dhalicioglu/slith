@@ -17,6 +17,7 @@ public class GameActivity extends ActionBarActivity {
 	private TimeMeasure timer;
 	
 	private TextView timerScreen;
+	private TextView statusScreen;
 	
 	
 	// android stuff, on create eg.
@@ -31,6 +32,7 @@ public class GameActivity extends ActionBarActivity {
 		this.setRefresher(new Refresher(this));
 		
 		setTimerScreen((TextView)findViewById(R.id.Timer));
+		setStatusScreen((TextView) findViewById(R.id.Status));
 		
 		timer = new TimeMeasure();
 		
@@ -73,6 +75,9 @@ public class GameActivity extends ActionBarActivity {
 	public TextView getTimerScreen() {
 		return timerScreen;
 	}
+	public TextView getStatusScreen() {
+		return statusScreen;
+	}
 	
 	// setters for private attributes
 	public void setGameScreen(GameScreen gameScreen) {
@@ -89,6 +94,9 @@ public class GameActivity extends ActionBarActivity {
 	}	
 	public void setTimerScreen(TextView textView) {
 		this.timerScreen = textView;
+	}
+	public void setStatusScreen(TextView statusScreen) {
+		this.statusScreen = statusScreen;
 	}
 
 

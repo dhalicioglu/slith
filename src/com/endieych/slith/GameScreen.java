@@ -15,7 +15,7 @@ import android.view.View;
 
 
 public class GameScreen extends View{
-	
+ 
 	private GameManager gameManager = new GameManager();
 	private Paint paint = new Paint();
 	private Bitmap imageStick = BitmapFactory.decodeResource(getResources(), R.drawable.stick);
@@ -50,13 +50,22 @@ public class GameScreen extends View{
 		paint.setStrokeWidth(1.5f);
 		paint.setStyle(Paint.Style.STROKE);
 		canvas.drawRect(0, 0, canvas.getWidth(), canvas.getHeight(), paint);
+		
+		// draw obstacles
+		paint.setStyle(Paint.Style.FILL);
+		paint.setColor(Color.BLACK);
+		canvas.drawCircle(gameManager.getObstacle().getCoordinateX(), gameManager.getObstacle().getCoordinateY(), gameManager.getObstacle().getRadius(), paint);
+		
 		// arrange the size of the stick and ball
 		this.setImageStick(Bitmap.createScaledBitmap(this.getImageStick(), (int) (gameManager.getStick().getCoordinateFront() - gameManager.getStick().getCoordinateEnd()), canvas.getHeight()/30, true));
 		this.setImageBall(Bitmap.createScaledBitmap(this.getImageBall(), (int) gameManager.getBall().getRadius()*2, (int) (gameManager.getBall().getRadius()*2), true));
+		
 		// set the Y coordinate of stick and ball
 		gameManager.getStick().setCoordinateY(canvas.getHeight() - canvas.getHeight()/10);
+		
 		// set the height of the stick
 		gameManager.getStick().setHeight(canvas.getHeight() - canvas.getHeight()/20);
+		
 		// draw stick and ball
 		canvas.drawBitmap(this.getImageStick(), gameManager.getStick().getCoordinateFront(), gameManager.getStick().getCoordinateY(), paint);
 		canvas.drawBitmap(this.getImageBall(), gameManager.getBall().getCenterX() - gameManager.getBall().getRadius(), gameManager.getBall().getCenterY() - gameManager.getBall().getRadius(), paint);
