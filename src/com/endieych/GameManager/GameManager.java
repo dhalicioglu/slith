@@ -128,6 +128,13 @@ public class GameManager {
 		float angleTuner = 1;
 		angleTuner = (-1 * (this.getBall().getCenterX() - this.getStick().getCoordinateCenter()) / (this.getStick().getLength()/2));
 		
+		if(angleTuner < 0.12 && angleTuner > 0){
+			angleTuner = (float) 0.12;
+		}else if (angleTuner > -0.12 && angleTuner < 0){
+			angleTuner = (float) -0.12;
+		}
+		
+		
 		if(this.getBall().getAngle() >= 180 && this.getBall().getAngle() <= 270){
 			this.getBall().setAngle((float) (180 - (this.getBall().getAngle() - 180)) + angleTuner * (this.getBall().getAngle() - 180));
 		}else if(this.getBall().getAngle() > 270 && this.getBall().getAngle() <= 360){

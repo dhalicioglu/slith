@@ -57,6 +57,10 @@ public class Refresher implements Runnable{
 				this.gameActivity.getStatusScreen().setText("Dragon");
 			}else if(this.gameActivity.getGameScreen().getGameManager().getBall().getVelocity() > 31 && this.gameActivity.getGameScreen().getGameManager().getBall().getVelocity() <= 36){
 				this.gameActivity.getStatusScreen().setText("GOD");
+			}else if(this.gameActivity.getGameScreen().getGameManager().getBall().getVelocity() > 36 && this.gameActivity.getGameScreen().getGameManager().getBall().getVelocity() <= 42){
+				this.gameActivity.getStatusScreen().setText("Alien detected!");
+			}else if(this.gameActivity.getGameScreen().getGameManager().getBall().getVelocity() > 42 && this.gameActivity.getGameScreen().getGameManager().getBall().getVelocity() <= 50){
+				this.gameActivity.getStatusScreen().setText("Chuck Norris");
 			}
 			
 			
@@ -69,6 +73,8 @@ public class Refresher implements Runnable{
 			// delay the refresh time
 			this.gameActivity.getHandler().postDelayed(this, 10);
 		}else{
+			this.gameActivity.getTimerScreen().setText(String.valueOf(duration));
+			
 			if(duration > sp.getFloat("score", 0)){
 				Editor editor = sp.edit();
 				editor.putFloat("score", (float) duration);
