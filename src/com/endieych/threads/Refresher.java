@@ -1,5 +1,9 @@
 package com.endieych.threads;
 
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
+
 import com.endieych.slith.GameActivity;
 
 public class Refresher implements Runnable{
@@ -11,6 +15,7 @@ public class Refresher implements Runnable{
 	
 	@Override
 	public void run() {
+		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this.gameActivity);
 		
 		double currentTime = this.gameActivity.getTimer().getCurrentTime();
 		double duration = (currentTime - this.gameActivity.getTimer().getStartTime()) / 1000;
@@ -54,12 +59,21 @@ public class Refresher implements Runnable{
 				this.gameActivity.getStatusScreen().setText("GOD");
 			}
 			
-				
+			
+			// refresh best score on screen
+			this.gameActivity.getScoreScreen().setText("Best Score:\n" + sp.getFloat("score", 0));
+	
 			// refresh screen
 			this.gameActivity.getGameScreen().invalidate();
 				
 			// delay the refresh time
 			this.gameActivity.getHandler().postDelayed(this, 10);
+		}else{
+			if(duration > sp.getFloat("score", 0)){
+				Editor editor = sp.edit();
+				editor.putFloat("score", (float) duration);
+				editor.commit();
+			}
 		}
 		
 	}

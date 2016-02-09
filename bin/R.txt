@@ -362,7 +362,7 @@ int id action_mode_bar_stub 0x7f09002d
 int id action_mode_close_button 0x7f090020
 int id action_settings 0x7f090048
 int id activity_chooser_view_content 0x7f090021
-int id advert 0x7f090047
+int id advert 0x7f090045
 int id advertScreen 0x7f09003f
 int id always 0x7f090014
 int id beginning 0x7f09001b
@@ -390,7 +390,7 @@ int id middle 0x7f09001d
 int id never 0x7f090017
 int id none 0x7f09000f
 int id normal 0x7f09000b
-int id play 0x7f090045
+int id play 0x7f090046
 int id progress_circular 0x7f090007
 int id progress_horizontal 0x7f090008
 int id radio 0x7f09002b
@@ -412,7 +412,7 @@ int id split_action_bar 0x7f090004
 int id submit_area 0x7f09003c
 int id tabMode 0x7f09000c
 int id title 0x7f090027
-int id tutorial 0x7f090046
+int id tutorial 0x7f090047
 int id up 0x7f090001
 int id useLogo 0x7f090013
 int id withText 0x7f090018

@@ -54,7 +54,7 @@
             android:layout_weight="1"
             android:textColor="@color/black"
             android:textSize="20dp"
-            android:text="Best Score: \nWorld Rank: "
+            android:text="Best Score:"
             android:ems="10"
             android:gravity="center_vertical|center_horizontal"  />
 
