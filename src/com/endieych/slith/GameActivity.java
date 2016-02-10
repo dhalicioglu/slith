@@ -2,11 +2,14 @@ package com.endieych.slith;
 
 import com.endieych.threads.Refresher;
 import com.endieych.timeMeasurement.TimeMeasure;
+
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class GameActivity extends ActionBarActivity {
@@ -19,6 +22,7 @@ public class GameActivity extends ActionBarActivity {
 	private TextView timerScreen;
 	private TextView statusScreen;
 	private TextView scoreScreen;
+	private ImageView replayScreen;
 	
 	
 	// android stuff, on create eg.
@@ -38,6 +42,10 @@ public class GameActivity extends ActionBarActivity {
 		setTimerScreen((TextView)findViewById(R.id.Timer));
 		setStatusScreen((TextView) findViewById(R.id.Status));
 		setScoreScreen((TextView) findViewById(R.id.BestScore));
+		
+		// initialize image view and make it disappear
+		this.setReplayScreen((ImageView) findViewById(R.id.replay));
+		this.getReplayScreen().setVisibility(View.INVISIBLE);
 		
 		// initialize TimeMeasure Object here
 		timer = new TimeMeasure();
@@ -62,6 +70,13 @@ public class GameActivity extends ActionBarActivity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	
+	
+	public void replayGame(View view){
+		this.finish();
+		this.startActivity(this.getIntent());
 	}
 
 	
@@ -88,6 +103,9 @@ public class GameActivity extends ActionBarActivity {
 	public TextView getScoreScreen() {
 		return scoreScreen;
 	}
+	public ImageView getReplayScreen() {
+		return replayScreen;
+	}
 	
 	// setters for private attributes
 	public void setGameScreen(GameScreen gameScreen) {
@@ -110,6 +128,9 @@ public class GameActivity extends ActionBarActivity {
 	}
 	public void setScoreScreen(TextView scoreScreen) {
 		this.scoreScreen = scoreScreen;
+	}
+	public void setReplayScreen(ImageView replayScreen) {
+		this.replayScreen = replayScreen;
 	}
 
 

@@ -4,6 +4,8 @@ import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.preference.PreferenceManager;
+import android.view.View;
+
 import com.endieych.slith.GameActivity;
 
 public class Refresher implements Runnable{
@@ -93,9 +95,10 @@ public class Refresher implements Runnable{
 				editor.commit();
 			}
 			
-			// restart the game
-		//	this.gameActivity.finish();
-		//	this.gameActivity.startActivity(this.gameActivity.getIntent());
+			
+			// make the replay screen visible
+			this.gameActivity.getReplayScreen().setVisibility(View.VISIBLE);
+			
 		}
 		
 	}

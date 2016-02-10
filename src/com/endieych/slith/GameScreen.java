@@ -13,7 +13,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 public class GameScreen extends View{
-  
+   
 	private GameManager gameManager = new GameManager();
 	private Paint paint = new Paint();
 	private Bitmap imageStick = BitmapFactory.decodeResource(getResources(), R.drawable.stick);
@@ -139,6 +139,5 @@ public class GameScreen extends View{
 	public void setImageBall(Bitmap imageBall) {
 		this.imageBall = imageBall;
 	}
-	
 
 }
