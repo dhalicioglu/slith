@@ -1,9 +1,9 @@
 package com.endieych.threads;
 
+import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.preference.PreferenceManager;
-
 import com.endieych.slith.GameActivity;
 
 public class Refresher implements Runnable{
@@ -13,6 +13,7 @@ public class Refresher implements Runnable{
 		this.gameActivity = gameAcvtivity;
 	}
 	
+	@SuppressLint("NewApi")
 	@Override
 	public void run() {
 		SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this.gameActivity);
@@ -22,6 +23,7 @@ public class Refresher implements Runnable{
 		
 		
 		// this part refreshes the game screen
+		// if the game has not ended yet
 		if(this.gameActivity.getTimer().getEndTime() == 0){
 			// move the ball
 			this.gameActivity.getGameScreen().getGameManager().moveBall(this.gameActivity.getGameScreen().getWidth(), this.gameActivity.getTimer());
@@ -73,13 +75,27 @@ public class Refresher implements Runnable{
 			// delay the refresh time
 			this.gameActivity.getHandler().postDelayed(this, 10);
 		}else{
-			this.gameActivity.getTimerScreen().setText(String.valueOf(duration));
+			// if the game is over
+			// refresh the timer one last time on the screen
+			if(this.gameActivity.getGameScreen().getGameManager().isGameStarted()){
+				this.gameActivity.getTimerScreen().setText(String.valueOf(duration));
+			}else{
+				// if the game is over before even it is started
+				this.gameActivity.getTimerScreen().setText(String.valueOf(0.000));
+				duration = 0;
+			}
 			
+			
+			// if the score is better than the best score, store it
 			if(duration > sp.getFloat("score", 0)){
 				Editor editor = sp.edit();
 				editor.putFloat("score", (float) duration);
 				editor.commit();
 			}
+			
+			// restart the game
+		//	this.gameActivity.finish();
+		//	this.gameActivity.startActivity(this.gameActivity.getIntent());
 		}
 		
 	}

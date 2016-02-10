@@ -29,15 +29,20 @@ public class GameActivity extends ActionBarActivity {
 		
 		// initialize gameScreen object
 		setGameScreen((GameScreen) findViewById(R.id.gameScreen));
+		
+		// thread and handler is initialized here
 		this.setHandler(new Handler());
 		this.setRefresher(new Refresher(this));
 		
+		// initialize 3 text views here
 		setTimerScreen((TextView)findViewById(R.id.Timer));
 		setStatusScreen((TextView) findViewById(R.id.Status));
 		setScoreScreen((TextView) findViewById(R.id.BestScore));
 		
+		// initialize TimeMeasure Object here
 		timer = new TimeMeasure();
 		
+		// give the thread to handler and start thread
 		this.getHandler().post(this.refresher);
 		this.refresher.run();
 	}

@@ -34,6 +34,9 @@ public class MainMenuActivity extends ActionBarActivity {
 		return super.onOptionsItemSelected(item);
 	}
 	
+	
+	// when the play button is pressed on the main menu
+	// start game activity
 	public void play(View view){
 		Intent intent = new Intent(this, GameActivity.class);
 		startActivity(intent);

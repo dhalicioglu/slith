@@ -15,7 +15,6 @@
         android:layout_height="0dp"
         android:layout_weight="5"
         android:orientation="vertical" >
-
     </LinearLayout>
 
     <LinearLayout
@@ -57,7 +56,6 @@
             android:text="Best Score:"
             android:ems="10"
             android:gravity="center_vertical|center_horizontal"  />
-
     </LinearLayout>
     
     <com.endieych.slith.GameScreen

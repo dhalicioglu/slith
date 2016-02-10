@@ -35,13 +35,10 @@ public class GameScreen extends View{
 	}
 	
 	
-
-
 	@SuppressLint("DrawAllocation")
 	@Override
 	protected void onDraw(Canvas canvas) {
 		super.onDraw(canvas);
-		
 		
 		// draw borders
 		paint.setColor(Color.BLACK);
@@ -49,7 +46,7 @@ public class GameScreen extends View{
 		paint.setStyle(Paint.Style.STROKE);
 		canvas.drawRect(0, 0, canvas.getWidth(), canvas.getHeight(), paint);
 		
-		// draw obstacles
+		// draw obstacle
 		paint.setStyle(Paint.Style.FILL);
 		paint.setColor(Color.BLACK);
 		canvas.drawCircle(gameManager.getObstacle().getCoordinateX(), gameManager.getObstacle().getCoordinateY(), gameManager.getObstacle().getRadius(), paint);
@@ -75,10 +72,8 @@ public class GameScreen extends View{
 		
 		switch(e.getAction()){	
 			case MotionEvent.ACTION_DOWN:
-				System.out.println("DOWN");
 				break;
 			case MotionEvent.ACTION_UP:
-				System.out.println("UP");
 				break;
 			case MotionEvent.ACTION_MOVE:
 				// if the stick tries to pass the left border of the screen
