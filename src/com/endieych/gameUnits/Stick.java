@@ -11,9 +11,9 @@ public class Stick {
 	// constructor
 	public Stick(){
 		this.setCoordinateFront(150);
-		this.setCoordinateEnd(310);
+		this.setCoordinateEnd(320);
 		this.setCoordinateY(500);
-		this.setLength(160);
+		this.setLength(170);
 	}
 
 	// getters for private attributes

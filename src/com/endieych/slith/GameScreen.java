@@ -49,17 +49,19 @@ public class GameScreen extends View{
 		// draw obstacle
 		paint.setStyle(Paint.Style.FILL);
 		paint.setColor(Color.BLACK);
+		this.gameManager.getObstacle().setRadius(canvas.getWidth()/20);
 		canvas.drawCircle(gameManager.getObstacle().getCoordinateX(), gameManager.getObstacle().getCoordinateY(), gameManager.getObstacle().getRadius(), paint);
 		
 		// arrange the size of the stick and ball
-		this.setImageStick(Bitmap.createScaledBitmap(this.getImageStick(), (int) (gameManager.getStick().getCoordinateFront() - gameManager.getStick().getCoordinateEnd()), canvas.getHeight()/30, true));
+		this.getGameManager().getStick().setLength(canvas.getWidth() / 5);
+		this.setImageStick(Bitmap.createScaledBitmap(this.getImageStick(), canvas.getWidth() / 5, canvas.getHeight()/30, true));
 		this.setImageBall(Bitmap.createScaledBitmap(this.getImageBall(), (int) gameManager.getBall().getRadius()*2, (int) (gameManager.getBall().getRadius()*2), true));
 		
 		// set the Y coordinate of stick and ball
-		gameManager.getStick().setCoordinateY(canvas.getHeight() - canvas.getHeight()/10);
+		gameManager.getStick().setCoordinateY(canvas.getHeight() - canvas.getHeight()/8);
 		
 		// set the height of the stick
-		gameManager.getStick().setHeight(canvas.getHeight() - canvas.getHeight()/20);
+		gameManager.getStick().setHeight(canvas.getHeight() - canvas.getHeight()/15);
 		
 		// draw stick and ball
 		canvas.drawBitmap(this.getImageStick(), gameManager.getStick().getCoordinateFront(), gameManager.getStick().getCoordinateY(), paint);

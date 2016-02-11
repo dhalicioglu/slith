@@ -150,14 +150,14 @@ public class GameManager {
 		// and same for the right side
 		float angleTuner = 1;
 		angleTuner = (-1 * (this.getBall().getCenterX() - this.getStick().getCoordinateCenter()) / (this.getStick().getLength()/2));
-		
+		System.out.println(angleTuner);
 		// if the angleTuner is too low
 		// it means the ball will tend to bend to side too much
 		// to prevent this, i am putting a limit of bending, in another word a limit of angleTuner
-		if(angleTuner < 0.12 && angleTuner > 0){
-			angleTuner = (float) 0.12;
-		}else if (angleTuner > -0.12 && angleTuner < 0){
-			angleTuner = (float) -0.12;
+		if(angleTuner > 0.91 && angleTuner < 1){
+			angleTuner = (float) 0.91;
+		}else if (angleTuner < -0.91 && angleTuner > -1){
+			angleTuner = (float) -0.91;
 		}
 		
 		
